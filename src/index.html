@@ -5,10 +5,32 @@
     <title></title>
   </head>
   <body>
-    <input id="userInput" type="text" name="userInput" value="">
-    <button class="doctorSearch" type="button" name="button">Search</button>
-    <div class="results">
-
+    <p>By doctor:</p>
+    <form id="doctorForm" action="index.html" method="post">
+      <input id="doctorInput" type="text" name="userInput" value="">
+      <button class="doctorSearch" type="button" name="button">Search</button>
+    </form>
+    <br>
+    <p>By ailment:</p>
+    <form id="keywordForm" action="index.html" method="post">
+      <input id="keywordInput" type="text" name="userInput" value="">
+      <button class="doctorSearch" type="button" name="button">Search</button>
+    </form>
+    <div id="resultA">
+      <ul>
+        <li class="doctorFirstName"></li>
+        <li class="doctorLastName"></li>
+        <li class="doctorAcceptingPatients"></li>
+        <li class="doctorPhone"></li>
+      </ul>
+    </div>
+    <div id="resultB">
+      <ul>
+        <li class="doctorFirstName"></li>
+        <li class="doctorLastName"></li>
+        <li class="doctorAcceptingPatients"></li>
+        <li class="doctorPhone"></li>
+      </ul>
     </div>
   </body>
 </html>
