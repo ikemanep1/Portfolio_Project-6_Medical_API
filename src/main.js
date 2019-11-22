@@ -17,6 +17,26 @@ $(document).ready(function(){
     $("#doctorCountry").text("doctorName");
     $("#doctorZip").text("doctorName");
 
+    let promise = new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?location=45.5051%2C-122.6750%2C10&user_location=45.5051%2C122.6750&sort=full-name-asc&limit=10&user_key=API_KEY`;
+      request.onload = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      };
+      request.open("GET", url, true);
+      request.send();
+    });
+    promise.then(function(response) {
+      let doctorInformation = JSON.parse(response);
+
+    }, function(error) {
+      console.log(`There was an error processing your request: ${error.message}`);
+    });
+
   });
 });
 
@@ -34,6 +54,26 @@ $(document).ready(function(){
     $("#doctorCity").text("keywordName");
     $("#doctorCountry").text("keywordName");
     $("#doctorZip").text("keywordName");
+
+    let promise = new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?location=45.5051%2C-122.6750%2C10&user_location=45.5051%2C122.6750&sort=full-name-asc&limit=10&user_key=API_KEY`;
+      request.onload = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      };
+      request.open("GET", url, true);
+      request.send();
+    });
+    promise.then(function(response) {
+      let doctorInformation = JSON.parse(response);
+
+    }, function(error) {
+      console.log(`There was an error processing your request: ${error.message}`);
+    });
 
   });
 });
