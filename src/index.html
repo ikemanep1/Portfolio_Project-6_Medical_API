@@ -6,30 +6,46 @@
   </head>
   <body>
     <p>By doctor:</p>
-    <form id="doctorForm" action="index.html" method="post">
+    <form id="doctorForm">
       <input id="doctorInput" type="text" name="userInput" value="">
-      <button class="doctorSearch" type="button" name="button">Search</button>
+      <button class="doctorSearch" type="submit" name="button">Search</button>
     </form>
     <br>
     <p>By ailment:</p>
-    <form id="keywordForm" action="index.html" method="post">
+    <form id="keywordForm">
       <input id="keywordInput" type="text" name="userInput" value="">
-      <button class="doctorSearch" type="button" name="button">Search</button>
+      <button class="keywordSearch" type="submit" name="button">Search</button>
     </form>
     <div id="resultA">
+      <h5>contact info:</h5>
       <ul>
-        <li class="doctorFirstName"></li>
-        <li class="doctorLastName"></li>
-        <li class="doctorAcceptingPatients"></li>
-        <li class="doctorPhone"></li>
+        <li class="doctorFirstName">First name: </li>
+        <li class="doctorLastName">Last Name: </li>
+        <li class="doctorAcceptingPatients">Accepting patients: </li>
+        <li class="doctorPhone">Phone number: </li>
+      </ul>
+      <h5>address:</h5>
+      <ul>
+        <li class="doctorStreet">street: </li>
+        <li class="doctorCity">city: </li>
+        <li class="doctorCountry">country: </li>
+        <li class="doctorZip">zip: </li>
       </ul>
     </div>
     <div id="resultB">
+      <h5>contact info:</h5>
       <ul>
-        <li class="doctorFirstName"></li>
-        <li class="doctorLastName"></li>
-        <li class="doctorAcceptingPatients"></li>
-        <li class="doctorPhone"></li>
+        <li class="keywordFirstName">First name: </li>
+        <li class="keywordLastName">Last Name: </li>
+        <li class="keywordAcceptingPatients">Accepting patients: </li>
+        <li class="keywordPhone">Phone number: </li>
+      </ul>
+      <h5>address:</h5>
+      <ul>
+        <li class="keywordStreet">street: </li>
+        <li class="keywordCity">city: </li>
+        <li class="keywordCountry">country: </li>
+        <li class="keywordZip">zip: </li>
       </ul>
     </div>
   </body>

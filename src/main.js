@@ -16,6 +16,7 @@ $(document).ready(function(){
     $("#doctorCity").text("doctorName");
     $("#doctorCountry").text("doctorName");
     $("#doctorZip").text("doctorName");
+    $("#resultA").show();
 
     let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
@@ -54,6 +55,7 @@ $(document).ready(function(){
     $("#doctorCity").text("keywordName");
     $("#doctorCountry").text("keywordName");
     $("#doctorZip").text("keywordName");
+    $("#resultB").show();
 
     let promise = new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
