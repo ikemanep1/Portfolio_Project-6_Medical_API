@@ -29,17 +29,7 @@ body {
   margin-left: 150px;
   margin-right: 150px;
 }
-#resultA {
-  text-align: center;
-  padding: 4px;
-  color: #ffff1c;
-  background-color: #5a5b4f;
-  border: 3px solid #ff9900;
-  margin-left: 150px;
-  margin-right: 150px;
-}
-
-#resultB {
+#resultBlock {
   text-align: center;
   padding: 4px;
   color: #ffff1c;

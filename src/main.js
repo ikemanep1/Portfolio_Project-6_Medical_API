@@ -2,80 +2,49 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
+import { DoctorResult } from './backEnd.js';
 
 
 $(document).ready(function(){
-  $("#doctorform").submit(function(event){
+  $("#doctorForm").submit(function(event){
     event.preventDefault();
     let doctorName = $("#doctorInput").val();
-    $("#doctorFirstName").text("doctorName");
-    $("#doctorLastName").text("doctorName");
-    $("#doctorAcceptingPatients").text("doctorName");
-    $("#doctorPhone").text("doctorName");
-    $("#doctorStreet").text("doctorName");
-    $("#doctorCity").text("doctorName");
-    $("#doctorCountry").text("doctorName");
-    $("#doctorZip").text("doctorName");
-    $("#resultA").show();
-
-    let promise = new Promise(function(resolve, reject) {
-      let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?location=45.5051%2C-122.6750%2C10&user_location=45.5051%2C122.6750&sort=full-name-asc&limit=10&user_key=API_KEY`;
-      request.onload = function() {
-        if (this.readyState === 4 && this.status === 200) {
-          resolve(request.response);
-        } else {
-          reject(Error(request.statusText));
+    let ailment = $("#keywordInput").val();
+    (async () => {
+      let informationGrab = new DoctorResult();
+      const response = await informationGrab.doctorFind(doctorName, ailment);
+      infoDisplay(response);
+    })();
+    function infoDisplay(response) {
+      if (response.data.length === 0) {
+        $('#resultBlock').text("We're sorry, no doctors meet the criteria.");
+      } else {
+        for (let i = 0; i < response.data.length; i++) {
+          $('#resultBlock').append(`Doctor's Name: ${response.data[i].profile.first_name} ${response.data[i].profile.last_name}`);
+          $('#resultBlock').append("<br>");
+          $('#resultBlock').append(`Doctor's Address: ${response.data[i].practices[0].visit_address.street}
+          ${response.data[i].practices[0].visit_address.city}
+          ${response.data[i].practices[0].visit_address.state}
+          ${response.data[i].practices[0].visit_address.zip}`);
+          $('#resultBlock').append("<br>");
+          $('#resultBlock').append(`Doctor's phone number: ${response.data[i].practices[0].phones[0].number}`);
+          $('#resultBlock').append("<br>");
+          if (response.data[i].practices[0].website === undefined) {
+            $('#resultBlock').append(`The Doctor's website is not available.`);
+            $('#resultBlock').append("<br>");
+          } else {
+            $('.results').append(`Website: ${response.data[i].practices[0].website}`);
+            $('#resultBlock').append("<br>");
+          }
+          if (response.data[i].practices[0].accepts_new_patients === true) {
+            $('#resultBlock').append(`The Doctor is currently accepting new patients.`);
+            $('#resultBlock').append("<br>");
+            $('#resultBlock').append("<br>");
+          } else {
+            $("#resultBlock").append(`The Doctor is not accepting new patients!`);
+          }
         }
-      };
-      request.open("GET", url, true);
-      request.send();
-    });
-    promise.then(function(response) {
-      let doctorInformation = JSON.parse(response);
-
-    }, function(error) {
-      console.log(`There was an error processing your request: ${error.message}`);
-    });
-
-  });
-});
-
-
-
-$(document).ready(function(){
-  $("#keywordform").submit(function(event){
-    event.preventDefault();
-    let keywordName = $("#keywordInput").val();
-    $("#doctorFirstName").text("keywordName");
-    $("#doctorLastName").text("keywordName");
-    $("#doctorAcceptingPatients").text("keywordName");
-    $("#doctorPhone").text("keywordName");
-    $("#doctorStreet").text("keywordName");
-    $("#doctorCity").text("keywordName");
-    $("#doctorCountry").text("keywordName");
-    $("#doctorZip").text("keywordName");
-    $("#resultB").show();
-
-    let promise = new Promise(function(resolve, reject) {
-      let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?location=45.5051%2C-122.6750%2C10&user_location=45.5051%2C122.6750&sort=full-name-asc&limit=10&user_key=API_KEY`;
-      request.onload = function() {
-        if (this.readyState === 4 && this.status === 200) {
-          resolve(request.response);
-        } else {
-          reject(Error(request.statusText));
-        }
-      };
-      request.open("GET", url, true);
-      request.send();
-    });
-    promise.then(function(response) {
-      let doctorInformation = JSON.parse(response);
-
-    }, function(error) {
-      console.log(`There was an error processing your request: ${error.message}`);
-    });
-
+      }
+    }
   });
 });
