@@ -1,6 +1,9 @@
 body {
   background-color: #004400;
 }
+.reset{
+  display: none;
+}
 .header{
   text-align: center;
   padding: 4px;

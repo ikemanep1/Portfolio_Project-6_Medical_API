@@ -10,6 +10,7 @@ $(document).ready(function(){
     event.preventDefault();
     let doctorName = $("#doctorInput").val();
     let ailment = $("#keywordInput").val();
+    $(".reset").show
     (async () => {
       let informationGrab = new DoctorResult();
       const response = await informationGrab.doctorFind(doctorName, ailment);
