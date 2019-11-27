@@ -11,7 +11,7 @@ _This application will find doctors that can help with your ailment. Search para
 ### Setup/Installation Requirements
 
 * _1: download from Github_
-* _2: get free API from [Better Doctor API]https://developer.betterdoctor.com/
+* _2: get free API from https://developer.betterdoctor.com/
 * _3: navigate the page_
 * _4: interact with the page to get some results!_
 
