@@ -17,7 +17,7 @@ _This application will find doctors that can help with your ailment. Search para
 
 # Known Bugs
 
-_The website information will not load._
+__
 
 # specs
 | Behavior        | Input           | Outcome  |
